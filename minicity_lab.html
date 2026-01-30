@@ -278,7 +278,7 @@
 
         .hero-sub {
             font-size: 1.1rem;
-            color: var(--mc-text-sub);
+            color: #333;
             margin-bottom: 30px;
         }
 
@@ -435,7 +435,7 @@
         }
 
         .jp-title {
-            font-size: 2rem;
+            font-size: 1.75rem;
         }
 
         .jp-title::after {
@@ -785,54 +785,41 @@
             100% { top: 100%; }
         }
 
-        /* セクションごとの歯車（薄く・かみ合うように） */
+        /* セクションごとの大きな歯車1個（かみ合うモーション） */
         .section-gears {
             position: absolute;
             inset: 0;
             z-index: 0;
             pointer-events: none;
-            overflow: hidden;
+            overflow: visible;
         }
         .section-gear {
             position: absolute;
-            opacity: 0.15;
-            color: #e0e0e0;
+            opacity: 0.45;
+            color: #999;
         }
-        .section-gear-left {
-            left: 2%;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 56px;
-            height: 56px;
-            animation: labGearCCW 9s steps(24) infinite;
+        .section-gear-single {
+            width: 100px;
+            height: 100px;
+            right: 3%;
         }
-        .section-gear-right {
-            right: 2%;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 48px;
-            height: 48px;
-            animation: labGearCW 7s steps(24) infinite;
+        /* 奇数セクション: 歯車を下にはみ出し・時計回り → 次のセクションの歯車とかみ合う */
+        section.has-section-gears:nth-of-type(odd) .section-gear-single {
+            bottom: -25%;
+            animation: labGearCWRotate 10s steps(24) infinite;
         }
-        .section-gear-center {
-            left: 50%;
-            bottom: 15%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 40px;
-            animation: labGearCCWCenter 8s steps(12) infinite;
+        /* 偶数セクション: 歯車を上にはみ出し・反時計回り → 前のセクションの歯車とかみ合う */
+        section.has-section-gears:nth-of-type(even) .section-gear-single {
+            top: -25%;
+            animation: labGearCCWRotate 10s steps(24) infinite;
         }
-        @keyframes labGearCW {
-            from { transform: translateY(-50%) rotate(0deg); }
-            to { transform: translateY(-50%) rotate(360deg); }
+        @keyframes labGearCWRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
-        @keyframes labGearCCW {
-            from { transform: translateY(-50%) rotate(360deg); }
-            to { transform: translateY(-50%) rotate(0deg); }
-        }
-        @keyframes labGearCCWCenter {
-            from { transform: translateX(-50%) rotate(360deg); }
-            to { transform: translateX(-50%) rotate(0deg); }
+        @keyframes labGearCCWRotate {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
         }
         section.has-section-gears {
             position: relative;
@@ -841,8 +828,8 @@
             position: relative;
             z-index: 1;
         }
-        .contact-section .section-gear {
-            color: rgba(255, 255, 255, 0.25);
+        .contact-section .section-gear-single {
+            color: rgba(255, 255, 255, 0.55);
         }
 
         /* 浮遊する座標テキスト */
@@ -903,7 +890,7 @@
                 ふじた<span>電気探求所</span>
             </a>
             <div class="d-flex align-items-center">
-                <div class="social-icons d-none d-md-flex">
+                <div class="social-icons d-flex">
                     <a href="https://www.instagram.com/suita360ca_mera?igsh=M3YzbThtZnM2c2kx&utm_source=qr" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
                     <a href="https://www.youtube.com/@%E3%82%B5%E3%83%96%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88-i9z" target="_blank" rel="noopener noreferrer" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
                     <a href="https://lin.ee/53nKj8z" target="_blank" rel="noopener noreferrer" title="LINE"><i class="fa-brands fa-line"></i></a>
@@ -918,8 +905,7 @@
     <!-- HERO -->
     <section class="hero-section has-section-gears">
         <div class="section-gears" aria-hidden="true">
-            <svg class="section-gear section-gear-left" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
-            <svg class="section-gear section-gear-right" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
+            <svg class="section-gear section-gear-single" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
         </div>
         <!-- 背景POV動画（車載カメラ視点） -->
         <video class="hero-video-bg" autoplay muted loop playsinline>
@@ -974,8 +960,7 @@
     <!-- RC IMAGE SLIDER：ラジコンで何をやるか -->
     <section class="rc-slider-section has-section-gears">
         <div class="section-gears" aria-hidden="true">
-            <svg class="section-gear section-gear-left" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
-            <svg class="section-gear section-gear-right" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
+            <svg class="section-gear section-gear-single" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
         </div>
         <div class="container">
             <div class="section-header">
@@ -1031,8 +1016,7 @@
     <!-- WHAT SECTION -->
     <section id="what" class="what-section bg-graph has-section-gears">
         <div class="section-gears" aria-hidden="true">
-            <svg class="section-gear section-gear-left" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
-            <svg class="section-gear section-gear-right" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
+            <svg class="section-gear section-gear-single" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
         </div>
         <div class="container">
             <div class="section-header">
@@ -1088,8 +1072,7 @@
     <!-- FOR PARENTS -->
     <section class="parents-section has-section-gears">
         <div class="section-gears" aria-hidden="true">
-            <svg class="section-gear section-gear-left" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
-            <svg class="section-gear section-gear-right" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
+            <svg class="section-gear section-gear-single" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
         </div>
         <div class="container">
             <div class="section-header">
@@ -1112,8 +1095,7 @@
     <!-- FOR KIDS -->
     <section class="kids-section bg-graph has-section-gears">
         <div class="section-gears" aria-hidden="true">
-            <svg class="section-gear section-gear-left" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
-            <svg class="section-gear section-gear-right" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
+            <svg class="section-gear section-gear-single" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
         </div>
         <div class="container">
             <div class="section-header">
@@ -1153,8 +1135,7 @@
     <!-- FOR BUSINESS -->
     <section class="business-section has-section-gears">
         <div class="section-gears" aria-hidden="true">
-            <svg class="section-gear section-gear-left" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
-            <svg class="section-gear section-gear-right" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
+            <svg class="section-gear section-gear-single" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
         </div>
         <div class="container">
             <div class="section-header">
@@ -1186,8 +1167,7 @@
     <!-- 出張イベント -->
     <section class="business-section bg-graph has-section-gears">
         <div class="section-gears" aria-hidden="true">
-            <svg class="section-gear section-gear-left" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
-            <svg class="section-gear section-gear-right" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
+            <svg class="section-gear section-gear-single" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
         </div>
         <div class="container">
             <div class="section-header">
@@ -1312,25 +1292,16 @@
     <!-- HOW IT WORKS - 仕組みのヒミツ -->
     <section class="business-section has-section-gears">
         <div class="section-gears" aria-hidden="true">
-            <svg class="section-gear section-gear-left" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
-            <svg class="section-gear section-gear-right" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
+            <svg class="section-gear section-gear-single" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
         </div>
         <div class="container">
             <div class="section-header">
                 <span class="en-label">HOW IT WORKS</span>
-                <h2 class="jp-title">仕組みのヒミツ（技術と思想）</h2>
+                <h2 class="jp-title">仕組みのヒミツ</h2>
                 <p class="mt-3 text-muted">「自分たちで作り変える」。<br>アナログとデジタルの融合。</p>
             </div>
             <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="business-card h-100">
-                        <h4 class="mb-3"><i class="fa-solid fa-cube text-orange me-2"></i>MDFボード</h4>
-                        <p class="text-muted small">
-                            <strong>ミニチュアだから室内で立体的に遊べる。</strong><br>組み替え可能な町をつくる。創造のプロセスを大切に。
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="business-card h-100">
                         <h4 class="mb-3"><i class="fa-solid fa-print text-orange me-2"></i>3Dプリンタ</h4>
                         <p class="text-muted small">
@@ -1338,7 +1309,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="business-card h-100">
                         <h4 class="mb-3"><i class="fa-solid fa-video text-orange me-2"></i>カメラ搭載の極小マシン</h4>
                         <p class="text-muted small">
@@ -1353,8 +1324,7 @@
     <!-- WHY NOW -->
     <section class="progress-section bg-graph has-section-gears">
         <div class="section-gears" aria-hidden="true">
-            <svg class="section-gear section-gear-left" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
-            <svg class="section-gear section-gear-right" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
+            <svg class="section-gear section-gear-single" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
         </div>
         <div class="container">
             <div class="row justify-content-center">
@@ -1372,8 +1342,7 @@
     <!-- 1号店 千里山 -->
     <section class="business-section has-section-gears">
         <div class="section-gears" aria-hidden="true">
-            <svg class="section-gear section-gear-left" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
-            <svg class="section-gear section-gear-right" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
+            <svg class="section-gear section-gear-single" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
         </div>
         <div class="container">
             <div class="row justify-content-center">
@@ -1409,8 +1378,7 @@
     <!-- CONTACT -->
     <section id="contact" class="contact-section has-section-gears">
         <div class="section-gears" aria-hidden="true">
-            <svg class="section-gear section-gear-left" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
-            <svg class="section-gear section-gear-right" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
+            <svg class="section-gear section-gear-single" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
         </div>
         <div class="container">
             <span class="en-label" style="background:rgba(255,255,255,0.2);color:#fff;">CONTACT</span>
