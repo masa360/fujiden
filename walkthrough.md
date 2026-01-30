@@ -1,0 +1,90 @@
+# Stemon-style Design Reproduction - Walkthrough
+
+## Summary
+Successfully created a full reproduction of the **Stemon.net** design essence in `stemon_demo.html`.
+
+## Implemented Design Elements
+
+### 1. Color Palette (Extracted from Stemon)
+| Token | Hex Code | Usage |
+|-------|----------|-------|
+| Primary Orange | `#ED8C00` | CTA buttons, index numbers, highlights |
+| Primary Blue | `#005BAC` | Logo, footer, badges |
+| Accent Green | `#8DC21F` | Course badges, pencil icon |
+| Light Background | `#F9F5F1` | Section alternation |
+
+---
+
+### 2. Hero Section
+- **Diamond Grid Collage**: Rotated 45° grid of image blocks on the right side
+- **Catchphrase Styling**: "未来" and "予習" highlighted in orange with underline accent
+- **Decorative Pencil Icon**: Green pencil at end of catchphrase
+
+![Hero Section](C:/Users/fujim/.gemini/antigravity/brain/4b82516c-fcd8-4409-bf32-d7e2ff433f74/hero_section_1769212251389.png)
+
+---
+
+### 3. Banner Slider
+- Implemented with **Slick Carousel**
+- Auto-play with fade transitions
+- Dot navigation at bottom
+
+---
+
+### 4. Section Dividers
+- **Wave SVG Dividers** between sections (not straight lines)
+- Creates a sense of "movement" in the layout
+
+---
+
+### 5. "3 Reasons" Section
+- **Dashed Borders** on cards (educational/craft feel)
+- **Large Orange Index Numbers** (01, 02, 03)
+- **Icon Circles** with gradient background
+- **Blue Badges** for category labels
+
+---
+
+### 6. Graph Paper Background
+- Light blue grid pattern on white
+- Applied to ABOUT and COURSES sections
+- Evokes "engineering/learning" atmosphere
+
+---
+
+### 7. Floating CV Button
+- Fixed position bottom-right
+- Pulse animation
+- Orange with white border
+- Responsive: becomes full-width bar on mobile
+
+---
+
+## Browser Verification Recording
+![Browser Demo](C:/Users/fujim/.gemini/antigravity/brain/4b82516c-fcd8-4409-bf32-d7e2ff433f74/stemon_verification_1769212222714.webp)
+
+---
+
+## How to Use
+1. Open `stemon_demo.html` in any modern browser
+2. Copy the `<style>` block to apply to your own Bootstrap project
+3. Adjust CSS variables in `:root` to customize colors
+
+---
+
+# MiniCity Lab LP Reproduction
+
+## Summary
+Created `minicity_lab.html` based on the user's existing LP (v0), adapting it to the **Stemon-style design system**.
+
+## Implemented Content
+- **Branding**: "ミニシティ・ラボ" (MiniCity Lab) with Stemon-style logo
+- **Hero**: "Small Town, Big Experience" catchphrase with diamond grid graphics
+- **Features (What)**: Dashed-border cards explaining the service
+- **For Kids**: 3-step process (Mission -> Build -> Present) with large numbers
+- **Floating Action**: Green LINE consultation button with pulse animation
+
+## Verification
+![Hero Section Check](C:/Users/fujim/.gemini/antigravity/brain/4b82516c-fcd8-4409-bf32-d7e2ff433f74/hero_section_check_1769223560562.png)
+![Kids Section Check](C:/Users/fujim/.gemini/antigravity/brain/4b82516c-fcd8-4409-bf32-d7e2ff433f74/kids_section_check_1769223591144.png)
+
