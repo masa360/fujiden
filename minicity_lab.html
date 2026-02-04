@@ -745,8 +745,8 @@
             inset: 0;
             background-color: #fff;
             background-image:
-                linear-gradient(rgba(0, 91, 172, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 91, 172, 0.04) 1px, transparent 1px);
+                linear-gradient(rgba(0, 91, 172, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 91, 172, 0.08) 1px, transparent 1px);
             background-size: 20px 20px;
             animation: labGridMove 20s linear infinite;
         }
@@ -763,7 +763,7 @@
             margin-left: -100px;
             margin-top: -100px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 152, 0, 0.18) 0%, rgba(255, 152, 0, 0.04) 40%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 152, 0, 0.28) 0%, rgba(255, 152, 0, 0.08) 40%, transparent 70%);
             pointer-events: none;
             left: 0;
             top: 0;
@@ -775,9 +775,9 @@
             left: 0;
             right: 0;
             height: 2px;
-            opacity: 0.5;
-            background: linear-gradient(90deg, transparent, rgba(0, 91, 172, 0.12), transparent);
-            box-shadow: 0 0 6px rgba(0, 91, 172, 0.1);
+            opacity: 0.75;
+            background: linear-gradient(90deg, transparent, rgba(0, 91, 172, 0.2), transparent);
+            box-shadow: 0 0 10px rgba(0, 91, 172, 0.15);
             animation: labScanline 6s ease-in-out infinite alternate;
         }
         @keyframes labScanline {
@@ -832,6 +832,16 @@
             color: rgba(255, 255, 255, 0.55);
         }
 
+        /* 修理から学ぶ - 解説リンク */
+        .repair-link {
+            color: #ff9800 !important;
+            text-decoration: underline !important;
+            font-weight: 600;
+        }
+        .repair-link:hover {
+            color: #e68900 !important;
+        }
+
         /* 浮遊する座標テキスト */
         .lab-coords {
             position: absolute;
@@ -842,7 +852,7 @@
             position: absolute;
             font-size: 10px;
             font-family: monospace;
-            color: rgba(0, 91, 172, 0.25);
+            color: rgba(0, 91, 172, 0.45);
             white-space: nowrap;
             animation: labCoordFade 4s ease-in-out infinite;
         }
@@ -857,8 +867,8 @@
         .lab-coord:nth-child(9) { left: 88%; top: 42%; animation-delay: 2.8s; }
         @keyframes labCoordFade {
             0%, 100% { opacity: 0; }
-            15%, 85% { opacity: 0.5; }
-            50% { opacity: 0.8; }
+            15%, 85% { opacity: 0.65; }
+            50% { opacity: 1; }
         }
     </style>
 </head>
@@ -1286,6 +1296,32 @@
         </div>
     </div>
 
+    <!-- 修理から学ぶ - 解説モーダル -->
+    <div class="modal fade" id="repairModal" tabindex="-1" aria-labelledby="repairModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <h2 class="jp-title mb-0" id="repairModalLabel">「壊れた」は、中身を知る最高の機会です。</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pt-3 pb-4">
+                    <p class="text-muted mb-3">
+                        普段、私たちは中身のわからない「ブラックボックス」に囲まれて暮らしています。でも、ラジコンが動かなくなった瞬間、その中身と向き合うチャンスが生まれます。
+                    </p>
+                    <p class="text-muted mb-3">
+                        「なぜ止まった？」「ここが折れたのか？」
+                    </p>
+                    <p class="text-muted mb-4">
+                        仮説を立てて、3Dプリンターで部品を作って、試してみる。その過程を繰り返すと、あんなに複雑に見えたものが、驚くほどシンプルに見えてきます。
+                    </p>
+                    <p class="text-muted mb-0">
+                        この視点は、家にあるドライヤーや掃除機にも応用できます。単なる「家電」が、「熱と風を操る仕組み」へと変わる。「自分にも、仕組みがわかる。直せるかもしれない」そんな自信が、日常をただ消費するだけではない、一生モノの「探求の目」に変わります。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- HOW IT WORKS - 仕組みのヒミツ -->
     <section class="business-section">
 
@@ -1330,9 +1366,13 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <span class="en-label">WHY NOW</span>
-                    <h2 class="jp-title text-center">なぜ、いま「動くトミカの世界」なのか</h2>
+                    <h2 class="jp-title text-center">直りはしないがためになる</h2>
                     <p class="mt-4 text-muted text-center lead">
-                        デジタル全盛の今だからこそ、『手ざわりのある失敗』を。<br>学びの入口を。
+                        直りはしないがためになる。修理と分解から学ぶ、日本一小さな社会実験場。
+                        <a href="#" class="btn btn-link btn-sm repair-link ms-2" data-bs-toggle="modal" data-bs-target="#repairModal">「修理から入る」って、どういうこと？</a>
+                    </p>
+                    <p class="mt-2 text-muted text-center">
+                        デジタル全盛の今だからこそ、『手ざわりのある失敗』を。学びの入口を。
                     </p>
                 </div>
             </div>
