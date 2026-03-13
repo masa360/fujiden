@@ -832,6 +832,190 @@
             color: rgba(255, 255, 255, 0.55);
         }
 
+        /* ========== COMPARISON SECTION ========== */
+        .comparison-section {
+            padding: 80px 0;
+            background: transparent;
+        }
+
+        .comparison-card {
+            background: #fff;
+            border-radius: var(--mc-radius-card);
+            padding: 36px 28px 32px;
+            height: 100%;
+            box-shadow: var(--mc-shadow-soft);
+            border: 2px solid #ede9e4;
+            position: relative;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .comparison-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.10);
+        }
+
+        .comparison-card--featured {
+            border: 2.5px solid var(--mc-orange);
+            background: linear-gradient(160deg, #fffaf3 0%, #fff 60%);
+            box-shadow: 0 10px 40px rgba(237,140,0,0.18);
+            transform: scale(1.03);
+            z-index: 2;
+        }
+
+        .comparison-card--featured:hover {
+            transform: scale(1.03) translateY(-4px);
+        }
+
+        .comparison-badge-featured {
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--mc-orange);
+            color: #fff;
+            font-size: 0.78rem;
+            font-weight: 800;
+            padding: 5px 18px;
+            border-radius: 20px;
+            white-space: nowrap;
+            letter-spacing: 0.05em;
+            box-shadow: 0 4px 12px rgba(237,140,0,0.35);
+        }
+
+        .comparison-icon-wrap {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            background: var(--mc-bg-light);
+            margin-bottom: 2px;
+            border: 2px solid #ede9e4;
+            flex-shrink: 0;
+        }
+
+        .comparison-card--featured .comparison-icon-wrap {
+            background: var(--mc-orange-light);
+            border-color: rgba(237,140,0,0.3);
+        }
+
+        .comparison-source-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--mc-text-sub);
+            letter-spacing: 0.06em;
+        }
+
+        .comparison-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--mc-text-main);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .comparison-card--featured .comparison-title {
+            color: var(--mc-orange);
+        }
+
+        .comparison-food-tag {
+            display: inline-block;
+            background: var(--mc-bg-light);
+            color: var(--mc-text-sub);
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 5px 14px;
+            border-radius: 20px;
+            border: 1.5px solid #e0dbd4;
+            width: fit-content;
+        }
+
+        .comparison-card--featured .comparison-food-tag {
+            background: var(--mc-orange-light);
+            color: var(--mc-orange);
+            border-color: rgba(237,140,0,0.3);
+        }
+
+        .comparison-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #e0dbd4, transparent);
+            margin: 2px 0;
+        }
+
+        .comparison-merit-block,
+        .comparison-note-block {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.88rem;
+            line-height: 1.7;
+        }
+
+        .comparison-merit-icon {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--mc-green);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .comparison-note-icon {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #f0f0f0;
+            color: #999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .comparison-merit-text {
+            color: var(--mc-text-main);
+            font-weight: 500;
+        }
+
+        .comparison-note-text {
+            color: var(--mc-text-sub);
+        }
+
+        .comparison-arrow-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            margin: 30px 0 10px;
+        }
+
+        .comparison-arrow-label {
+            font-size: 0.75rem;
+            color: var(--mc-text-sub);
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-card--featured {
+                transform: scale(1.0);
+            }
+            .comparison-card--featured:hover {
+                transform: translateY(-4px);
+            }
+        }
+
         /* 修理から学ぶ - 解説リンク */
         .repair-link {
             color: #ff9800 !important;
@@ -1074,6 +1258,100 @@
 
     <!-- WAVE -->
     <div class="wave-divider top">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+            <path fill="#F9F5F1" d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z"></path>
+        </svg>
+    </div>
+
+    <!-- COMPARISON - 3つの体験レベル比較 -->
+    <section class="comparison-section has-section-gears">
+        <div class="section-gears" aria-hidden="true">
+            <svg class="section-gear section-gear-single" viewBox="0 0 100 100" fill="currentColor"><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="22" fill="#fff"/><circle cx="50" cy="8" r="8"/><circle cx="78" cy="22" r="8"/><circle cx="92" cy="50" r="8"/><circle cx="78" cy="78" r="8"/><circle cx="50" cy="92" r="8"/><circle cx="22" cy="78" r="8"/><circle cx="8" cy="50" r="8"/><circle cx="22" cy="22" r="8"/></svg>
+        </div>
+        <div class="container">
+            <div class="section-header">
+                <span class="en-label">WHY FUJITA</span>
+                <h2 class="jp-title">「消費」から「自炊」へ。<br>ここだけが違う理由。</h2>
+                <p class="mt-3 text-muted">学びの深さを「料理」に例えるなら——<br>ふじた電気探求所がめざすのは、<strong>材料調達から始める「究極の自炊」</strong>です。</p>
+            </div>
+
+            <div class="row g-4 align-items-stretch justify-content-center">
+
+                <!-- 市販のラジコンや動画 -->
+                <div class="col-md-4 col-lg-4">
+                    <div class="comparison-card">
+                        <div class="comparison-source-label">一般的な選択肢 ①</div>
+                        <div class="comparison-icon-wrap">🏪</div>
+                        <h3 class="comparison-title">市販のラジコン・動画だけ</h3>
+                        <div class="comparison-food-tag">惣菜（完成品）</div>
+                        <div class="comparison-divider"></div>
+                        <div class="comparison-merit-block">
+                            <div class="comparison-merit-icon"><i class="fa-solid fa-check" style="font-size:0.55rem;"></i></div>
+                            <span class="comparison-merit-text">手軽にすぐ楽しめる。消費する楽しさがある。</span>
+                        </div>
+                        <div class="comparison-note-block">
+                            <div class="comparison-note-icon"><i class="fa-solid fa-minus" style="font-size:0.55rem;"></i></div>
+                            <span class="comparison-note-text">中身がブラックボックス。遊び終わったら終わり。</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ロボット・プログラミング教室 -->
+                <div class="col-md-4 col-lg-4">
+                    <div class="comparison-card">
+                        <div class="comparison-source-label">一般的な選択肢 ②</div>
+                        <div class="comparison-icon-wrap">📦</div>
+                        <h3 class="comparison-title">ロボット・プログラミング教室</h3>
+                        <div class="comparison-food-tag">ミールキット</div>
+                        <div class="comparison-divider"></div>
+                        <div class="comparison-merit-block">
+                            <div class="comparison-merit-icon"><i class="fa-solid fa-check" style="font-size:0.55rem;"></i></div>
+                            <span class="comparison-merit-text">ロジックの理解・最短で成功体験が得られる。</span>
+                        </div>
+                        <div class="comparison-note-block">
+                            <div class="comparison-note-icon"><i class="fa-solid fa-minus" style="font-size:0.55rem;"></i></div>
+                            <span class="comparison-note-text">決まったキットがないと作れない。応用が利きにくい。</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ふじた電気探求所（フィーチャー） -->
+                <div class="col-md-4 col-lg-4">
+                    <div class="comparison-card comparison-card--featured">
+                        <div class="comparison-badge-featured">⚡ ふじた電気探求所</div>
+                        <div class="comparison-source-label" style="color:var(--mc-orange);">ここだけの体験</div>
+                        <div class="comparison-icon-wrap">🔥</div>
+                        <h3 class="comparison-title">ふじた電気探求所</h3>
+                        <div class="comparison-food-tag">究極の自炊（インフラ作り）</div>
+                        <div class="comparison-divider"></div>
+                        <div class="comparison-merit-block">
+                            <div class="comparison-merit-icon"><i class="fa-solid fa-check" style="font-size:0.55rem;"></i></div>
+                            <span class="comparison-merit-text">野生の思考力が育つ。材料調達から失敗まで、丸ごと体験できる。</span>
+                        </div>
+                        <div class="comparison-note-block">
+                            <div class="comparison-note-icon"><i class="fa-solid fa-clock" style="font-size:0.55rem;"></i></div>
+                            <span class="comparison-note-text">時間はかかる。最初は見栄えが悪いことも。でも、それが本物の力になる。</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 補足メッセージ -->
+            <div class="row justify-content-center mt-5">
+                <div class="col-lg-8 text-center">
+                    <p class="text-muted" style="font-size:0.95rem; line-height:2;">
+                        「最初から完璧でなくていい」——<br>
+                        <strong>失敗ごと、遠回りごと、試行錯誤の全部が体験になる場所</strong>が、ふじた電気探求所です。
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- WAVE -->
+    <div class="wave-divider">
         <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
             <path fill="#F9F5F1" d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z"></path>
         </svg>
